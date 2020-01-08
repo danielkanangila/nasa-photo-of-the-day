@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { format, isToday } from 'date-fns';
+import { format } from 'date-fns';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import NavBar from './Components/NavBar';
 import MediaCard from './Components/MediaCard';
+import Footer from './Components/Footer';
 import "./App.css";
 
 import axios from 'axios';
 
 const API_KEY = 'x1Rd70N8Pnpj3jeYhUqxIlrUNvN0BPgCVBgJ1qN1';
-const DEMO_KEY = 'DEMO_KEY';
 const BASE_APIS_URL  = 'https://api.nasa.gov/planetary/';
 const DEFAULT_API_URL = `${BASE_APIS_URL}apod?api_key=${API_KEY}`;
 const APP_NAME = 'NasaFun'
@@ -52,6 +52,7 @@ function App() {
         <Container>
           <MediaCard { ...data } />
         </Container>
+        <Footer />
       </div>
     </ThemeProvider>
   );

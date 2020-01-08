@@ -19,7 +19,13 @@ const useStyles = makeStyles(theme => ({
   title: {
     textAlign: 'center'
   },
-  date : {
+  cardFooter : {
+    paddingTop: 16,
+    paddingBottom: 16,
+    fontSize: 13,
+  },
+  copyright: {
+    display: 'block',
     paddingTop: 16,
     paddingBottom: 16,
     fontSize: 13,
@@ -27,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MediaCard = props => {
-    const { date, explanation, url, title } = props
+    const { date, explanation, url, title, copyright } = props
   const classes = useStyles();
 
   return (
@@ -35,7 +41,7 @@ const MediaCard = props => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={url}
+          image={url }
           title={title}
         />
         <CardContent>
@@ -45,8 +51,11 @@ const MediaCard = props => {
           <Typography variant="body2" color="textSecondary" component="p">
             { explanation }
           </Typography>
-          <Typography className={classes.date} color="textSecondary" component="p">
+          <Typography className={classes.cardFooter} color="textSecondary" component="p">
             Date: {date}
+            <Typography className={classes.copyright} component="span">
+              Copyright: {copyright}
+            </Typography>
           </Typography>
         </CardContent>
       </CardActionArea>
