@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import List from '@material-ui/core/List';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
+import Divider from '@material-ui/core/Divider';
+import Logo from './Logo';
 
 const useStyles = makeStyles({
     list: {
@@ -16,9 +18,10 @@ const useStyles = makeStyles({
     },
 });
 
+
 const MenuDrawer = props => {
     const classes = useStyles();
-    const { side, toggleDrawer } = props;
+    const { side, toggleDrawer, appName } = props;
     
     const list = (
         <div
@@ -40,6 +43,8 @@ const MenuDrawer = props => {
 
     return(
         <Drawer open={ side.left } onClose={toggleDrawer(side, false)}>
+            <Logo from="drawer" appName={appName} />
+            <Divider />
             {list}
         </Drawer>
     );

@@ -94,10 +94,9 @@ const NavBar = props => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              <Logo />
-              { appName }
-            </Typography>
+            <div className={classes.title}>
+              <Logo appName={appName} />
+            </div>
             <div className={classes.search}>
               {/*
               <div className={classes.searchIcon}>
@@ -121,7 +120,7 @@ const NavBar = props => {
             </div>
           </Toolbar>
         </Container>
-        <MenuDrawer side={side} toggleDrawer={toggleDrawer} />
+        <MenuDrawer appName={appName} side={side} toggleDrawer={toggleDrawer} />
       </AppBar>
     </div>
   );
