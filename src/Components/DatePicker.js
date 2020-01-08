@@ -12,7 +12,7 @@ const DatePicker = props => {
             <KeyboardDatePicker
                 disableToolbar
                 variant="inline"
-                format="MM/dd/yyyy"
+                format="yyyy-MM-dd"
                 margin="normal"
                 id="date-picker-inline"
                 label="Pick a date"
