@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
+import DatePicker from './DatePicker';
 import Logo from './Logo';
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +67,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
-  const { appName } = props
+  const { appName, handleDateChange, selectedDate } = props
   const classes = useStyles();
 
   return (
@@ -87,17 +88,25 @@ const NavBar = props => {
               { appName }
             </Typography>
             <div className={classes.search}>
+              {/*
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
+
+                <InputBase
+                  onChange={ handleChange }
+                  onKeyDown={ keyPress }
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              */}
+              <DatePicker 
+                handleDateChange={handleDateChange}
+                selectedDate={selectedDate} />
             </div>
           </Toolbar>
         </Container>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { format, isToday } from 'date-fns';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import NavBar from './Components/NavBar';
@@ -12,11 +13,12 @@ const DEMO_KEY = 'DEMO_KEY';
 const BASE_APIS_URL  = 'https://api.nasa.gov/planetary/';
 const DEFAULT_API_URL = `${BASE_APIS_URL}apod?api_key=${API_KEY}`;
 const APP_NAME = 'NasaFun'
+const t = new Date();
 
 function App() {
 
   const [ data, setData ] = useState({})
-  const [ nDate, setNDate ] = useState('1988-06-06');
+  const [ selectedDate, setSelectedDate ] = useState(format(new Date(), 'MM/dd/yyyy'));
 
   useEffect(() => {
     // axios.get(DEFAULT_API_URL).then(res => {
@@ -30,10 +32,19 @@ function App() {
   const theme = createMuiTheme({
     palette: {}
   });
+
+  const handleDateChange = date => {
+      setSelectedDate(date);
+      console.log(format(date, 'MM/dd/yyyy'));
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <NavBar appName={ APP_NAME } _date={ nDate } />
+        <NavBar 
+          appName={ APP_NAME }
+          handleDateChange={handleDateChange}
+          selectedDate={selectedDate}  />
         <Container>
           <MediaCard { ...data } />
         </Container>
