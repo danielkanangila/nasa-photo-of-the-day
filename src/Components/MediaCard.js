@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 const MediaCard = props => {
-    const { date, explanation, hdurl, url, title } = props
+    const { date, explanation, url, title } = props
   const classes = useStyles();
 
   return (
@@ -36,18 +36,18 @@ const MediaCard = props => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://apod.nasa.gov/apod/image/1203/angrysun_friedman_1080.jpg"
+          image={url}
           title={title}
         />
         <CardContent>
           <Typography className={classes.title} gutterBottom variant="h5" component="h2">
-            Angry Sun Erupting
+            {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          It's one of the baddest sunspot regions in years. Active Region 1429 may not only look, to some, like an angry bird -- it has thrown off some of the most powerful flares and coronal mass ejections of the current solar cycle. The extended plumes from these explosions have even rained particles on the Earth's magnetosphere that have resulted in colorful auroras. Pictured above, AR 1429 was captured in great detail in the Sun's chromosphere three days ago by isolating a color of light emitted primarily by hydrogen. The resulting image is shown in inverted false color with dark regions being the brightest and hottest. Giant magnetically-channeled tubes of hot gas, some longer than the Earth, are known as spicules and can be seen carpeting the chromosphere. The light tendril just above AR 1429 is a cool filament hovering just over the active sunspot region. As solar maximum nears in the next few years, the increasingly wound and twisted magnetic field of the Sun may create even more furious active regions that chirp even more energetic puffs of solar plasma into our Solar System. Gallery: See images of the latest planetary conjunction,
+            { explanation }
           </Typography>
           <Typography className={classes.date} color="textSecondary" component="p">
-            Date: 2012-03-14
+            Date: {date}
           </Typography>
         </CardContent>
       </CardActionArea>

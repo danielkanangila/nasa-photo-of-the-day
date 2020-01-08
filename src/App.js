@@ -10,7 +10,7 @@ import axios from 'axios';
 const API_KEY = 'x1Rd70N8Pnpj3jeYhUqxIlrUNvN0BPgCVBgJ1qN1';
 const DEMO_KEY = 'DEMO_KEY';
 const BASE_APIS_URL  = 'https://api.nasa.gov/planetary/';
-const DEFAULT_API_URL = `${BASE_APIS_URL}apod?api_key=${DEMO_KEY}`;
+const DEFAULT_API_URL = `${BASE_APIS_URL}apod?api_key=${API_KEY}`;
 
 function App() {
 
@@ -18,12 +18,12 @@ function App() {
   const [ nDate, setNDate ] = useState('1988-06-06');
 
   useEffect(() => {
-    // axios.get(DEFAULT_API_URL).then(res => {
-    //   setData(res.data);
-    // }).catch(err => {
-    //   console.error(err);
-    // });
-  });
+    axios.get(DEFAULT_API_URL).then(res => {
+      setData(res.data);
+    }).catch(err => {
+      console.error(err);
+    });
+  }, [ data ]);
 
   const theme = createMuiTheme({
     palette: {}
