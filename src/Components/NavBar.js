@@ -8,10 +8,15 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Container from '@material-ui/core/Container';
+import Logo from './Logo';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+  },
+  appBar: {
+    backgroundColor: theme.palette.common.white,
+    color: theme.palette.common.black,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -19,17 +24,14 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
     display: 'none',
+    fontFamily: 'Anton',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
+    borderBottom: `1px solid ${fade(theme.palette.common.black, 0.15)}`,
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -39,6 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
   searchIcon: {
     width: theme.spacing(7),
+    color: fade(theme.palette.common.black, 0.25),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -62,12 +65,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = props => {
+  const { appName } = props
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.appBar} position="static">
         <Container>
           <Toolbar>
             <IconButton
@@ -79,7 +83,8 @@ const NavBar = () => {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              Photo
+              <Logo />
+              { appName }
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>

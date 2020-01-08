@@ -11,6 +11,7 @@ const API_KEY = 'x1Rd70N8Pnpj3jeYhUqxIlrUNvN0BPgCVBgJ1qN1';
 const DEMO_KEY = 'DEMO_KEY';
 const BASE_APIS_URL  = 'https://api.nasa.gov/planetary/';
 const DEFAULT_API_URL = `${BASE_APIS_URL}apod?api_key=${API_KEY}`;
+const APP_NAME = 'NasaFun'
 
 function App() {
 
@@ -18,12 +19,13 @@ function App() {
   const [ nDate, setNDate ] = useState('1988-06-06');
 
   useEffect(() => {
-    axios.get(DEFAULT_API_URL).then(res => {
-      setData(res.data);
-    }).catch(err => {
-      console.error(err);
-    });
-  }, [ data ]);
+    // axios.get(DEFAULT_API_URL).then(res => {
+    //   setData(res.data);
+    // }).catch(err => {
+    //   console.error(err);
+    // });
+    return []
+  }, []);
 
   const theme = createMuiTheme({
     palette: {}
@@ -31,7 +33,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <NavBar title="NPDay" _date={ nDate } />
+        <NavBar appName={ APP_NAME } _date={ nDate } />
         <Container>
           <MediaCard { ...data } />
         </Container>

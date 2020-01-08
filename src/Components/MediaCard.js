@@ -8,11 +8,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   card: {
     width: '100%',
     marginTop: 40,
-    textAlign: 'left'
+    textAlign: 'left',
+    background: theme.palette.common.white
   },
   media: {
     height: 400,
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     paddingBottom: 16,
     fontSize: 13,
   }
-});
+}));
 
 const MediaCard = props => {
     const { date, explanation, url, title } = props
