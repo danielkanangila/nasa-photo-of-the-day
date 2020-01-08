@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Container from '@material-ui/core/Container';
 import DatePicker from './DatePicker';
 import Logo from './Logo';
+import MenuDrawer from './MenuDrawer';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,8 +68,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
+  const [side, setSide] = useState({left: false});
   const { appName, handleDateChange, selectedDate } = props
   const classes = useStyles();
+
+  const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setSide({[side]: open });
+  };
 
   return (
     <div className={classes.root}>
@@ -80,6 +90,7 @@ const NavBar = props => {
               className={classes.menuButton}
               color="inherit"
               aria-label="open drawer"
+              onClick={toggleDrawer('left', true)}
             >
               <MenuIcon />
             </IconButton>
@@ -110,6 +121,7 @@ const NavBar = props => {
             </div>
           </Toolbar>
         </Container>
+        <MenuDrawer side={side} toggleDrawer={toggleDrawer} />
       </AppBar>
     </div>
   );
